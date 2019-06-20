@@ -1,0 +1,1908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>前程贷注册登录接口测试</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 120%; }
+table       { font-size: 100%; }
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="收起"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="详细"
+		}
+	}
+}
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "详细"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "收起"
+        }
+    }
+}
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1 style="font-family: Microsoft YaHei">前程贷注册登录接口测试</h1>
+<p class='attribute'><strong>测试人员 : </strong> iris</p>
+<p class='attribute'><strong>开始时间 : </strong> 2019-06-17 23:17:57</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:20.479609</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 122，通过 77，失败 19，错误 26，通过率= 63.11%</p>
+
+<p class='description'>运行环境: requests, unittest, ddt, openpyxl, pymysql</p>
+</div>
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 63.11% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 19 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 77 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 122 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 16px;">
+    <td>用例集/测试用例</td>
+    <td>总计</td>
+    <td>通过</td>
+    <td>失败</td>
+    <td>错误</td>
+    <td>详细</td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>unittest.loader._FailedTest</td>
+    <td class="text-center">2</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center">2</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',2)" class="detail" id='c1'>详细</a></td>
+</tr>
+
+<tr id='ft1_1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_01_register</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_1'>错误</button>
+    <div id='div_ft1_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_1'>错误</button>
+    <div id='div_ft1_1' class="collapse in" align="left">
+    <pre>
+    
+ft1_1: ImportError: Failed to import test module: test_01_register
+Traceback (most recent call last):
+  File "C:\Program Files (x86)\Python37\lib\unittest\loader.py", line 434, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Program Files (x86)\Python37\lib\unittest\loader.py", line 375, in _get_module_from_name
+    __import__(name)
+  File "D:\PycarmProject\TestMaster\cases\test_01_register.py", line 13, in &lt;module&gt;
+    class TestRegister(unittest.TestCase):
+  File "D:\PycarmProject\TestMaster\cases\test_01_register.py", line 15, in TestRegister
+    register_excel = ExcelHandler(CASE_DATA_DIR, 'register')
+  File "D:\PycarmProject\TestMaster\scripts\excelhandler.py", line 27, in __init__
+    self.Cases = namedtuple("Cases", self.data_header)
+  File "C:\Program Files (x86)\Python37\lib\collections\__init__.py", line 364, in namedtuple
+    raise ValueError('Type names and field names cannot be a '
+ValueError: Type names and field names cannot be a keyword: 'None'
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_02_login</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_2'>错误</button>
+    <div id='div_ft1_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_2'>错误</button>
+    <div id='div_ft1_2' class="collapse in" align="left">
+    <pre>
+    
+ft1_2: ImportError: Failed to import test module: test_02_login
+Traceback (most recent call last):
+  File "C:\Program Files (x86)\Python37\lib\unittest\loader.py", line 434, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Program Files (x86)\Python37\lib\unittest\loader.py", line 375, in _get_module_from_name
+    __import__(name)
+  File "D:\PycarmProject\TestMaster\cases\test_02_login.py", line 13, in &lt;module&gt;
+    class TestRegister(unittest.TestCase):
+  File "D:\PycarmProject\TestMaster\cases\test_02_login.py", line 15, in TestRegister
+    login_excel = ExcelHandler(CASE_DATA_DIR, 'login')
+  File "D:\PycarmProject\TestMaster\scripts\excelhandler.py", line 27, in __init__
+    self.Cases = namedtuple("Cases", self.data_header)
+  File "C:\Program Files (x86)\Python37\lib\collections\__init__.py", line 364, in namedtuple
+    raise ValueError('Type names and field names cannot be a '
+ValueError: Type names and field names cannot be a keyword: 'None'
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test_03_recharge.TestRecharge</td>
+    <td class="text-center">29</td>
+    <td class="text-center">20</td>
+    <td class="text-center">4</td>
+    <td class="text-center">5</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c2',29)" class="detail" id='c2'>详细</a></td>
+</tr>
+
+<tr id='pt2_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_01_成功登录后正常充值_post_</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_02_成功登录后正常充值_get_</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft2_3' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_03_登录失败后正常充值</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_3'>失败</button>
+    <div id='div_ft2_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_3'>失败</button>
+    <div id='div_ft2_3' class="collapse in" align="left">
+    <pre>
+    
+ft2_3: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 68, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 53, in test_login
+    self.assertIn(nt.expected, actual_response.text, msg="执行[{}]失败" .format(nt.title))  # assertIn必须是两个序列类型
+AssertionError: "{'status': 0, 'code': None, 'data': None, 'msg': '抱歉，请先登录。'}" not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"17499094.81","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[登录失败后正常充值]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_4' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_04_不登录直接充值</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_4'>失败</button>
+    <div id='div_ft2_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_4'>失败</button>
+    <div id='div_ft2_4' class="collapse in" align="left">
+    <pre>
+    
+ft2_4: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 68, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 53, in test_login
+    self.assertIn(nt.expected, actual_response.text, msg="执行[{}]失败" .format(nt.title))  # assertIn必须是两个序列类型
+AssertionError: "{'status': 0, 'code': None, 'data': None, 'msg': '抱歉，请先登录。'}" not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"17509095.31","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[不登录直接充值]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_05_为非登录账号充值</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_06_手机号为非注册账号</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_07_错误格式手机号</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_08_int类型的手机号</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_09_带空格的手机号</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_10_不传手机号</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_11_不传充值额度</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft2_12' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_12_不传任何参数</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_12'>错误</button>
+    <div id='div_ft2_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_12'>错误</button>
+    <div id='div_ft2_12' class="collapse in" align="left">
+    <pre>
+    
+ft2_12: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 35, in test_login
+    data1 = ReText.recharge_parametrization(nt.data)
+  File "D:\PycarmProject\TestMaster\scripts\ReHandler.py", line 182, in recharge_parametrization
+    data = cls.invest_phone_replace(data)
+  File "D:\PycarmProject\TestMaster\scripts\ReHandler.py", line 59, in invest_phone_replace
+    if re.search(cls.invest_phone_pattern, data):
+  File "C:\Program Files (x86)\Python37\lib\re.py", line 183, in search
+    return _compile(pattern, flags).search(string)
+TypeError: expected string or bytes-like object
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_13' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_13_参数以json格式传入</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_13'>失败</button>
+    <div id='div_ft2_13' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_13' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_13'>失败</button>
+    <div id='div_ft2_13' class="collapse in" align="left">
+    <pre>
+    
+ft2_13: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 68, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 53, in test_login
+    self.assertIn(nt.expected, actual_response.text, msg="执行[{}]失败" .format(nt.title))  # assertIn必须是两个序列类型
+AssertionError: "{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}" not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"17529096.31","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[参数以json格式传入]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_14' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_14_手机号为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_15' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_15_充值额度为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_16' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_16_str类型的充值额度</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_17' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_17_int类型的充值额度</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_18' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_18_充值额度精度为3</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft2_19' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_19_充值额度0_00</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_19' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_19'>失败</button>
+    <div id='div_ft2_19' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_19' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_19'>失败</button>
+    <div id='div_ft2_19' class="collapse in" align="left">
+    <pre>
+    
+ft2_19: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 68, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 53, in test_login
+    self.assertIn(nt.expected, actual_response.text, msg="执行[{}]失败" .format(nt.title))  # assertIn必须是两个序列类型
+AssertionError: '{"status":0,"code":"20117","data":null,"msg":"请输入范围在0到50万之间的正数金额"}' not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"17539096.31","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[充值额度0.00]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_20' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_20_充值额度0_01</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_21' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_21_充值额度负数_0_01</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_22' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_22_充值额度500000_00</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_23' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_23_充值额度500000_01</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_24' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_24_手机号含非法字符</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_25' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_25_充值额度含非法字符</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft2_26' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_26_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_26' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_26'>错误</button>
+    <div id='div_ft2_26' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_26' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_26'>错误</button>
+    <div id='div_ft2_26' class="collapse in" align="left">
+    <pre>
+    
+ft2_26: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 34, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_27' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_27_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_27' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_27'>错误</button>
+    <div id='div_ft2_27' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_27' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_27'>错误</button>
+    <div id='div_ft2_27' class="collapse in" align="left">
+    <pre>
+    
+ft2_27: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 34, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_28' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_28_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_28' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_28'>错误</button>
+    <div id='div_ft2_28' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_28' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_28'>错误</button>
+    <div id='div_ft2_28' class="collapse in" align="left">
+    <pre>
+    
+ft2_28: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 34, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_29' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_29_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_29' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_29'>错误</button>
+    <div id='div_ft2_29' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_29' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_29'>错误</button>
+    <div id='div_ft2_29' class="collapse in" align="left">
+    <pre>
+    
+ft2_29: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_03_recharge.py", line 34, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test_04_add.TestAdd</td>
+    <td class="text-center">62</td>
+    <td class="text-center">42</td>
+    <td class="text-center">13</td>
+    <td class="text-center">7</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c3',62)" class="detail" id='c3'>详细</a></td>
+</tr>
+
+<tr id='pt3_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_01_未登录直接加标</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_02_管理员登录</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_03_管理员正常加标_post_</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_04_管理员正常加标_get_</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_5' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_05_管理员与借款人为同一人</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_5'>失败</button>
+    <div id='div_ft3_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_5'>失败</button>
+    <div id='div_ft3_5' class="collapse in" align="left">
+    <pre>
+    
+ft3_5: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1} : 执行[管理员与借款人为同一人]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_06_用户ID不存在</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_7' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_07_用户ID为str类型</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_7'>错误</button>
+    <div id='div_ft3_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_7'>错误</button>
+    <div id='div_ft3_7' class="collapse in" align="left">
+    <pre>
+    
+ft3_7: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 15, in __call__
+    data = json.loads(data)
+  File "C:\Program Files (x86)\Python37\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 14 (char 13)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 39, in test_login
+    actual_response = self.one_request(nt.method, url, data1)  # 发起加标请求
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 18, in __call__
+    data = eval(data)  # eval函数处理字符串
+  File "&lt;string&gt;", line 1
+    {"memberId": ‘wwww’, "title": "iris的贷款项目", "amount": 1000.00, "loanRate": 5.5,"loanTerm": 6, "loanDateType": 0, "repaymemtWay": 4, "biddingDays": 7}
+                      ^
+SyntaxError: invalid character in identifier
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_8' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_08_用户ID为str类型的数字</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_8'>错误</button>
+    <div id='div_ft3_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_8'>错误</button>
+    <div id='div_ft3_8' class="collapse in" align="left">
+    <pre>
+    
+ft3_8: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 15, in __call__
+    data = json.loads(data)
+  File "C:\Program Files (x86)\Python37\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 14 (char 13)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 39, in test_login
+    actual_response = self.one_request(nt.method, url, data1)  # 发起加标请求
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 18, in __call__
+    data = eval(data)  # eval函数处理字符串
+  File "&lt;string&gt;", line 1
+    {"memberId": “12104”, "title": "iris的贷款项目", "amount": 1000.00, "loanRate": 5.5,"loanTerm": 6, "loanDateType": 0, "repaymemtWay": 4, "biddingDays": 7}
+                       ^
+SyntaxError: invalid character in identifier
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_09_不传用户ID</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_10_不传标题</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_11_不传借款金额</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_12' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_12_不传年利率</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_13' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_13_不传借款期限</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_14' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_14_不传借款期限类型</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_15' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_15_不传还款方式</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_16' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_16_不传竞标天数</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_17' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_17_不传任何参数</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_17' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_17'>错误</button>
+    <div id='div_ft3_17' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_17' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_17'>错误</button>
+    <div id='div_ft3_17' class="collapse in" align="left">
+    <pre>
+    
+ft3_17: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 34, in test_login
+    data1 = ReText.add_parametrization(nt.data)
+  File "D:\PycarmProject\TestMaster\scripts\ReHandler.py", line 197, in add_parametrization
+    data = cls.manage_phone_replace(data)
+  File "D:\PycarmProject\TestMaster\scripts\ReHandler.py", line 74, in manage_phone_replace
+    if re.search(cls.manage_phone_pattern, data):
+  File "C:\Program Files (x86)\Python37\lib\re.py", line 183, in search
+    return _compile(pattern, flags).search(string)
+TypeError: expected string or bytes-like object
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_18' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_18_参数以json格式传入</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_18' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_18'>失败</button>
+    <div id='div_ft3_18' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_18' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_18'>失败</button>
+    <div id='div_ft3_18' class="collapse in" align="left">
+    <pre>
+    
+ft3_18: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0, 'code': '20103', 'data': None, 'msg': '所有参数不能为空'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'code': '20103', 'data': None, 'msg': '所有参数不能为空', 'status': 0}
+?           ^  --                         ^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[参数以json格式传入]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_19' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_19_用户ID为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_20' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_20_标题为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_21' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_21_借款金额为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_22' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_22_年利率为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_23' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_23_借款期限为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_24' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_24_借款期限类型为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_25' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_25_还款方式为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_26' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_26_竞标天数为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_27' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_27_标题长度为51个中文字符串</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_27' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_27'>失败</button>
+    <div id='div_ft3_27' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_27' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_27'>失败</button>
+    <div id='div_ft3_27' class="collapse in" align="left">
+    <pre>
+    
+ft3_27: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'sta[19 chars]0102'} != {'sta[19 chars]0102', 'data': None, 'msg': "\n### Error updat[790 chars]w 1"}
+Diff is 1105 characters long. Set self.maxDiff to None to see it. : 执行[标题长度为51个中文字符串]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_28' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_28_标题为int类型</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_28' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_28'>失败</button>
+    <div id='div_ft3_28' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_28' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_28'>失败</button>
+    <div id='div_ft3_28' class="collapse in" align="left">
+    <pre>
+    
+ft3_28: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1} : 执行[标题为int类型]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_29' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_29_借款金额为str类型</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_30' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_30_借款金额为int类型</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_31' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_31_借款金额为负数_100_00</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_32' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_32_借款金额为999_00</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_33' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_33_借款金额为1011_10</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_34' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_34_借款金额为10000000000000000_00_19位_</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_34' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_34'>失败</button>
+    <div id='div_ft3_34' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_34' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_34'>失败</button>
+    <div id='div_ft3_34' class="collapse in" align="left">
+    <pre>
+    
+ft3_34: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'sta[19 chars]0102'} != {'sta[19 chars]0102', 'data': None, 'msg': "\n### Error updat[814 chars]w 1"}
+Diff is 1129 characters long. Set self.maxDiff to None to see it. : 执行[借款金额为10000000000000000.00（19位）]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_35' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_35_借款金额精度为3</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_36' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_36_年利率为str类型</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_36' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_36'>错误</button>
+    <div id='div_ft3_36' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_36' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_36'>错误</button>
+    <div id='div_ft3_36' class="collapse in" align="left">
+    <pre>
+    
+ft3_36: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 15, in __call__
+    data = json.loads(data)
+  File "C:\Program Files (x86)\Python37\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 74 (char 73)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 39, in test_login
+    actual_response = self.one_request(nt.method, url, data1)  # 发起加标请求
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 18, in __call__
+    data = eval(data)  # eval函数处理字符串
+  File "&lt;string&gt;", line 1
+    {"memberId": 12104, "title": "iris的贷款项目", "amount": 1000.00, "loanRate": “5%”,"loanTerm": 6, "loanDateType": 0, "repaymemtWay": 4, "biddingDays": 7}
+                                                                              ^
+SyntaxError: invalid character in identifier
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_37' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_37_年利率为int类型</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_38' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_38_年利率为负数_1_0</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_39' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_39_年利率为0_0</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_40' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_40_年利率为24_0</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_41' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_41_年利率为24_1</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_42' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_42_年利率精度为2</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_43' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_43_借款期限为str类型</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_44' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_44_借款期限为float类型</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_45' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_45_借款期限为负数_1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_45' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_45'>失败</button>
+    <div id='div_ft3_45' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_45' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_45'>失败</button>
+    <div id='div_ft3_45' class="collapse in" align="left">
+    <pre>
+    
+ft3_45: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0, 'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字', 'status': 0}
+?           ^  --                         ^^^^^^^^^^^^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[借款期限为负数-1]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_46' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_46_借款期限为0</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_46' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_46'>失败</button>
+    <div id='div_ft3_46' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_46' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_46'>失败</button>
+    <div id='div_ft3_46' class="collapse in" align="left">
+    <pre>
+    
+ft3_46: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0, 'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字', 'status': 0}
+?           ^  --                         ^^^^^^^^^^^^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[借款期限为0]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_47' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_47_借款期限为150</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_47' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_47'>失败</button>
+    <div id='div_ft3_47' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_47' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_47'>失败</button>
+    <div id='div_ft3_47' class="collapse in" align="left">
+    <pre>
+    
+ft3_47: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'sta[19 chars]0102'} != {'sta[19 chars]0102', 'data': None, 'msg': "\n### Error updat[822 chars]w 1"}
+Diff is 1137 characters long. Set self.maxDiff to None to see it. : 执行[借款期限为150]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_48' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_48_借款期限类型为str类型</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_48' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_48'>错误</button>
+    <div id='div_ft3_48' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_48' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_48'>错误</button>
+    <div id='div_ft3_48' class="collapse in" align="left">
+    <pre>
+    
+ft3_48: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 15, in __call__
+    data = json.loads(data)
+  File "C:\Program Files (x86)\Python37\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 109 (char 108)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 39, in test_login
+    actual_response = self.one_request(nt.method, url, data1)  # 发起加标请求
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 18, in __call__
+    data = eval(data)  # eval函数处理字符串
+  File "&lt;string&gt;", line 1
+    {"memberId": 12104, "title": "iris的贷款项目", "amount": 1000.00, "loanRate": 5.5,"loanTerm": 6, "loanDateType": “零”, "repaymemtWay": 4, "biddingDays": 7}
+                                                                                                                  ^
+SyntaxError: invalid character in identifier
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_49' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_49_借款期限类型为float类型</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_50' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_50_借款期限类型为负数_2</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_51' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_51_借款期限类型为非法数字</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_52' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_52_还款方式为str类型</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_52' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_52'>错误</button>
+    <div id='div_ft3_52' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_52' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_52'>错误</button>
+    <div id='div_ft3_52' class="collapse in" align="left">
+    <pre>
+    
+ft3_52: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 15, in __call__
+    data = json.loads(data)
+  File "C:\Program Files (x86)\Python37\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 128 (char 127)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 39, in test_login
+    actual_response = self.one_request(nt.method, url, data1)  # 发起加标请求
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 18, in __call__
+    data = eval(data)  # eval函数处理字符串
+  File "&lt;string&gt;", line 1
+    {"memberId": 12104, "title": "iris的贷款项目", "amount": 1000.00, "loanRate": 5.5,"loanTerm": 6, "loanDateType": 0, "repaymemtWay": “一次性”, "biddingDays": 7}
+                                                                                                                                       ^
+SyntaxError: invalid character in identifier
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_53' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_53_还款方式为float类型</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_54' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_54_还款方式为负数_4</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_54' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_54'>失败</button>
+    <div id='div_ft3_54' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_54' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_54'>失败</button>
+    <div id='div_ft3_54' class="collapse in" align="left">
+    <pre>
+    
+ft3_54: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0, 'code': '201011', 'data': None, 'msg':[34 chars]，11'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201011',
+-  'data': None,
+-  'msg': '参数错误：借款日期类型repaymemtWay只能为4，5，10，11',
+-  'status': 0} : 执行[还款方式为负数-4]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_55' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_55_还款方式为非法数字</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_55' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_55'>失败</button>
+    <div id='div_ft3_55' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_55' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_55'>失败</button>
+    <div id='div_ft3_55' class="collapse in" align="left">
+    <pre>
+    
+ft3_55: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0, 'code': '201011', 'data': None, 'msg':[34 chars]，11'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201011',
+-  'data': None,
+-  'msg': '参数错误：借款日期类型repaymemtWay只能为4，5，10，11',
+-  'status': 0} : 执行[还款方式为非法数字]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_56' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_56_竞标天数为str类型</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_56' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_56'>错误</button>
+    <div id='div_ft3_56' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_56' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_56'>错误</button>
+    <div id='div_ft3_56' class="collapse in" align="left">
+    <pre>
+    
+ft3_56: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 15, in __call__
+    data = json.loads(data)
+  File "C:\Program Files (x86)\Python37\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Program Files (x86)\Python37\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 146 (char 145)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 39, in test_login
+    actual_response = self.one_request(nt.method, url, data1)  # 发起加标请求
+  File "D:\PycarmProject\TestMaster\scripts\HttpRequests.py", line 18, in __call__
+    data = eval(data)  # eval函数处理字符串
+  File "&lt;string&gt;", line 1
+    {"memberId": 12104, "title": "iris的贷款项目", "amount": 1000.00, "loanRate": 5.5,"loanTerm": 6, "loanDateType": 0, "repaymemtWay": 4, "biddingDays": “七”}
+                                                                                                                                                       ^
+SyntaxError: invalid character in identifier
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_57' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_57_竞标天数为float类型</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_58' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_58_竞标天数为负数_1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_58' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_58'>失败</button>
+    <div id='div_ft3_58' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_58' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_58'>失败</button>
+    <div id='div_ft3_58' class="collapse in" align="left">
+    <pre>
+    
+ft3_58: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0, 'code': '201012', 'data': None, 'msg':[26 chars]-10'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201012',
+-  'data': None,
+-  'msg': '参数错误：竞标天数biddingDays只能为1-10',
+-  'status': 0} : 执行[竞标天数为负数-1]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_59' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_59_竞标天数为10</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_60' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_60_竞标天数为1</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft3_61' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_61_竞标天数为0</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_61' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_61'>失败</button>
+    <div id='div_ft3_61' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_61' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_61'>失败</button>
+    <div id='div_ft3_61' class="collapse in" align="left">
+    <pre>
+    
+ft3_61: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0, 'code': '201012', 'data': None, 'msg':[26 chars]-10'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201012',
+-  'data': None,
+-  'msg': '参数错误：竞标天数biddingDays只能为1-10',
+-  'status': 0} : 执行[竞标天数为0]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_62' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_62_竞标天数为11</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_62' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_62'>失败</button>
+    <div id='div_ft3_62' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_62' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_62'>失败</button>
+    <div id='div_ft3_62' class="collapse in" align="left">
+    <pre>
+    
+ft3_62: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_04_add.py", line 49, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0, 'code': '201012', 'data': None, 'msg':[26 chars]-10'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201012',
+-  'data': None,
+-  'msg': '参数错误：竞标天数biddingDays只能为1-10',
+-  'status': 0} : 执行[竞标天数为11]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='errorClass warning'>
+    <td>test_05_invest.TestInvest</td>
+    <td class="text-center">29</td>
+    <td class="text-center">15</td>
+    <td class="text-center">2</td>
+    <td class="text-center">12</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c4',29)" class="detail" id='c4'>详细</a></td>
+</tr>
+
+<tr id='pt4_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_01_管理员正常登录</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_02_管理员正确加标</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_03_管理员审核</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft4_4' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_04_不登录直接投资</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_4'>失败</button>
+    <div id='div_ft4_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_4'>失败</button>
+    <div id='div_ft4_4' class="collapse in" align="left">
+    <pre>
+    
+ft4_4: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 55, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0, 'code': '100014', 'data': None, 'msg': '请先登录'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '竞标成功'}
+- {'code': '100014', 'data': None, 'msg': '请先登录', 'status': 0}
+?                -                         ^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '竞标成功', 'status': 1}
+?                                         ^^^^             ^
+ : 执行[不登录直接投资]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt4_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_05_投资人正常登录</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_06_投资金额超过标的可投金额</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_07_正常投资流程_post_</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_08_正常投资流程_get_</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_09_投资人id为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_10_标id为空</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_11_投资人id不存在</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_12' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_12_标id不存在</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_13' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_13_投资人密码不正确</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_14' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_14_投资金额为0</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_15' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_15_投资金额为负数__100_</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_16' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_login_16_投资金额为不能被100整除的数_199_99_</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='ft4_17' class='none'>
+    <td class='failCase'><div class='testcase'>test_login_17_投资金额超过投资人账户余额</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_17' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_17'>失败</button>
+    <div id='div_ft4_17' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_17' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_17'>失败</button>
+    <div id='div_ft4_17' class="collapse in" align="left">
+    <pre>
+    
+ft4_17: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 59, in test_login
+    raise e
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 55, in test_login
+    self.assertEqual(json.loads(nt.expected, encoding='utf8'), actual_response.json(), msg="执行[{}]失败" .format(nt.title))
+AssertionError: {'status': 0, 'code': '11015', 'data': None, 'msg': '账户余额不足，请充值！'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '竞标成功'}
+- {'code': '11015', 'data': None, 'msg': '账户余额不足，请充值！', 'status': 0}
+?            ^  -                         ^^^^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '竞标成功', 'status': 1}
+?            ^^                           ^^^^             ^
+ : 执行[投资金额超过投资人账户余额]失败
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_18' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_18_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_18' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_18'>错误</button>
+    <div id='div_ft4_18' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_18' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_18'>错误</button>
+    <div id='div_ft4_18' class="collapse in" align="left">
+    <pre>
+    
+ft4_18: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_19' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_19_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_19' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_19'>错误</button>
+    <div id='div_ft4_19' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_19' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_19'>错误</button>
+    <div id='div_ft4_19' class="collapse in" align="left">
+    <pre>
+    
+ft4_19: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_20' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_20_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_20' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_20'>错误</button>
+    <div id='div_ft4_20' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_20' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_20'>错误</button>
+    <div id='div_ft4_20' class="collapse in" align="left">
+    <pre>
+    
+ft4_20: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_21' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_21_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_21' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_21'>错误</button>
+    <div id='div_ft4_21' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_21' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_21'>错误</button>
+    <div id='div_ft4_21' class="collapse in" align="left">
+    <pre>
+    
+ft4_21: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_22' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_22_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_22' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_22'>错误</button>
+    <div id='div_ft4_22' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_22' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_22'>错误</button>
+    <div id='div_ft4_22' class="collapse in" align="left">
+    <pre>
+    
+ft4_22: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_23' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_23_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_23' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_23'>错误</button>
+    <div id='div_ft4_23' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_23' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_23'>错误</button>
+    <div id='div_ft4_23' class="collapse in" align="left">
+    <pre>
+    
+ft4_23: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_24' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_24_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_24' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_24'>错误</button>
+    <div id='div_ft4_24' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_24' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_24'>错误</button>
+    <div id='div_ft4_24' class="collapse in" align="left">
+    <pre>
+    
+ft4_24: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_25' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_25_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_25' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_25'>错误</button>
+    <div id='div_ft4_25' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_25' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_25'>错误</button>
+    <div id='div_ft4_25' class="collapse in" align="left">
+    <pre>
+    
+ft4_25: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_26' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_26_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_26' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_26'>错误</button>
+    <div id='div_ft4_26' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_26' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_26'>错误</button>
+    <div id='div_ft4_26' class="collapse in" align="left">
+    <pre>
+    
+ft4_26: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_27' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_27_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_27' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_27'>错误</button>
+    <div id='div_ft4_27' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_27' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_27'>错误</button>
+    <div id='div_ft4_27' class="collapse in" align="left">
+    <pre>
+    
+ft4_27: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_28' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_28_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_28' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_28'>错误</button>
+    <div id='div_ft4_28' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_28' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_28'>错误</button>
+    <div id='div_ft4_28' class="collapse in" align="left">
+    <pre>
+    
+ft4_28: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_29' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_29_None</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_29' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_29'>错误</button>
+    <div id='div_ft4_29' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_29' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_29'>错误</button>
+    <div id='div_ft4_29' class="collapse in" align="left">
+    <pre>
+    
+ft4_29: Traceback (most recent call last):
+  File "D:\PycarmProject\TestMaster\libs\ddt.py", line 164, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PycarmProject\TestMaster\cases\test_05_invest.py", line 33, in test_login
+    url = self.base_url + nt.url
+TypeError: can only concatenate str (not "NoneType") to str
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>总计</td>
+    <td>122</td>
+    <td>77</td>
+    <td>19</td>
+    <td>26</td>
+    <td>通过率：63.11%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+</body>
+</html>

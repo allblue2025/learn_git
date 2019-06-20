@@ -1,0 +1,100 @@
+2019-06-17 23:22:56,892 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '11015', 'data': None, 'msg': '账户余额不足，请充值！'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '竞标成功'}
+- {'code': '11015', 'data': None, 'msg': '账户余额不足，请充值！', 'status': 0}
+?            ^  -                         ^^^^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '竞标成功', 'status': 1}
+?            ^^                           ^^^^             ^
+ : 执行[投资金额超过投资人账户余额]失败
+2019-06-17 23:22:57,001 - mylogger - [INFO] - [日志信息]:
+====================执行投资接口用例结束====================
+2019-06-18 10:33:02,463 - mylogger - [INFO] - [日志信息]:
+====================开始执行注册接口用例====================
+2019-06-18 10:33:04,666 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+- {'code': '20103', 'data': None, 'msg': '手机号不能为空', 'status': 0}
+?           ^  --                         ^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '注册成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[以json格式传参]失败
+2019-06-18 10:33:05,400 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20109', 'data': None, 'msg': '手机号码格式不正确'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+- {'code': '20109', 'data': None, 'msg': '手机号码格式不正确', 'status': 0}
+?           ^  --                         ^^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '注册成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[int类型的手机号]失败
+2019-06-18 10:33:05,962 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 17 (char 16)
+2019-06-18 10:33:07,853 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 39 (char 38)
+2019-06-18 10:33:08,259 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 62 (char 61)
+2019-06-18 10:33:08,759 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '注册成功', 'status': 1} : 执行[int类型的密码]失败
+2019-06-18 10:33:09,165 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '注册成功', 'status': 1} : 执行[密码含空格]失败
+2019-06-18 10:33:09,571 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '注册成功', 'status': 1} : 执行[密码含非法字符]失败
+2019-06-18 10:33:09,993 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '注册成功', 'status': 1} : 执行[昵称含空格]失败
+2019-06-18 10:33:10,430 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '注册成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '注册成功', 'status': 1} : 执行[昵称含非法字符]失败
+2019-06-18 10:33:10,508 - mylogger - [INFO] - [日志信息]:
+====================执行注册接口用例结束====================
+2019-06-18 10:33:10,508 - mylogger - [INFO] - [日志信息]:
+====================开始执行登录接口用例====================
+2019-06-18 10:33:11,367 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '登录成功'}
+- {'code': '20103', 'data': None, 'msg': '手机号不能为空', 'status': 0}
+?           ^  --                         ^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '登录成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[参数以json格式传入]失败
+2019-06-18 10:33:11,867 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 17 (char 16)
+2019-06-18 10:33:12,008 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 39 (char 38)
+2019-06-18 10:33:12,227 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或密码错误'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '登录成功'}
+- {'code': '20111', 'data': None, 'msg': '用户名或密码错误', 'status': 0}
+?           ^ ^^                          ^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '登录成功', 'status': 1}
+?           ^ ^^                          ^^^^             ^
+ : 执行[手机号为int类型]失败
+2019-06-18 10:33:12,430 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20111', 'data': None, 'msg': '用户名或密码错误'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '登录成功'}
+- {'code': '20111', 'data': None, 'msg': '用户名或密码错误', 'status': 0}
+?           ^ ^^                          ^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '登录成功', 'status': 1}
+?           ^ ^^                          ^^^^             ^
+ : 执行[密码为int类型]失败
+2019-06-18 10:33:13,023 - mylogger - [INFO] - [日志信息]:
+====================执行登录接口用例结束====================
+2019-06-18 10:33:13,289 - mylogger - [INFO] - [日志信息]:
+====================开始执行充值接口用例====================
+2019-06-18 10:33:14,398 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为："{'status': 0, 'code': None, 'data': None, 'msg': '抱歉，请先登录。'}" not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"18453100.83","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[登录失败后正常充值]失败
+2019-06-18 10:33:14,679 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为："{'status': 0, 'code': None, 'data': None, 'msg': '抱歉，请先登录。'}" not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"18463101.33","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[不登录直接充值]失败
+2019-06-18 10:33:16,663 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为："{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}" not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"18483102.33","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[参数以json格式传入]失败
+2019-06-18 10:33:16,757 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 17 (char 16)
+2019-06-18 10:33:16,897 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 42 (char 41)
+2019-06-18 10:33:17,819 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：'{"status":0,"code":"20117","data":null,"msg":"请输入范围在0到50万之间的正数金额"}' not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"18493102.33","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[充值额度0.00]失败
+2019-06-18 10:33:19,350 - mylogger - [INFO] - [日志信息]:
+====================执行充值接口用例结束====================
+2019-06-18 10:33:19,490 - mylogger - [INFO] - [日志信息]:
+====================开始执行加标接口用例====================
+2019-06-18 10:33:20,443 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1} : 执行[管理员与借款人为同一人]失败
+2019-06-18 10:33:21,006 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 14 (char 13)
+2019-06-18 10:33:21,131 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 14 (char 13)
+2019-06-18 10:33:22,162 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20103', 'data': None, 'msg': '所有参数不能为空'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'code': '20103', 'data': None, 'msg': '所有参数不能为空', 'status': 0}
+?           ^  --                         ^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[参数以json格式传入]失败
+2019-06-18 10:33:22,255 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 14 (char 13)
+2019-06-18 10:33:22,396 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 30 (char 29)
+2019-06-18 10:33:22,521 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 53 (char 52)
+2019-06-18 10:33:22,646 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 74 (char 73)

@@ -1,0 +1,99 @@
+2019-06-17 23:22:38,193 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为："{'status': 0, 'code': None, 'data': None, 'msg': '抱歉，请先登录。'}" not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"17986098.32","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[不登录直接充值]失败
+2019-06-17 23:22:40,302 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为："{'status': 0, 'code': '20103', 'data': None, 'msg': '手机号不能为空'}" not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"18006099.32","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[参数以json格式传入]失败
+2019-06-17 23:22:40,380 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 17 (char 16)
+2019-06-17 23:22:40,505 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 42 (char 41)
+2019-06-17 23:22:41,489 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：'{"status":0,"code":"20117","data":null,"msg":"请输入范围在0到50万之间的正数金额"}' not found in '{"status":1,"code":"10001","data":{"id":12103,"regname":"invest_user","pwd":"25D55AD283AA400AF464C76D713C07AD","mobilephone":"14776140825","leaveamount":"18016099.32","type":"1","regtime":"2019-06-05 00:06:52.0"},"msg":"充值成功"}' : 执行[充值额度0.00]失败
+2019-06-17 23:22:43,020 - mylogger - [INFO] - [日志信息]:
+====================执行充值接口用例结束====================
+2019-06-17 23:22:43,161 - mylogger - [INFO] - [日志信息]:
+====================开始执行加标接口用例====================
+2019-06-17 23:22:44,145 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1} : 执行[管理员与借款人为同一人]失败
+2019-06-17 23:22:44,582 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 14 (char 13)
+2019-06-17 23:22:44,582 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 14 (char 13)
+2019-06-17 23:22:45,566 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20103', 'data': None, 'msg': '所有参数不能为空'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'code': '20103', 'data': None, 'msg': '所有参数不能为空', 'status': 0}
+?           ^  --                         ^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[参数以json格式传入]失败
+2019-06-17 23:22:45,660 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 14 (char 13)
+2019-06-17 23:22:45,801 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 30 (char 29)
+2019-06-17 23:22:45,910 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 53 (char 52)
+2019-06-17 23:22:46,160 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 74 (char 73)
+2019-06-17 23:22:46,285 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 90 (char 89)
+2019-06-17 23:22:46,410 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 109 (char 108)
+2019-06-17 23:22:46,519 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 128 (char 127)
+2019-06-17 23:22:46,644 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 146 (char 145)
+2019-06-17 23:22:46,816 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'sta[19 chars]0102'} != {'sta[19 chars]0102', 'data': None, 'msg': "\n### Error updat[790 chars]w 1"}
+Diff is 1105 characters long. Set self.maxDiff to None to see it. : 执行[标题长度为51个中文字符串]失败
+2019-06-17 23:22:46,941 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1} : 执行[标题为int类型]失败
+2019-06-17 23:22:47,878 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'sta[19 chars]0102'} != {'sta[19 chars]0102', 'data': None, 'msg': "\n### Error updat[814 chars]w 1"}
+Diff is 1129 characters long. Set self.maxDiff to None to see it. : 执行[借款金额为10000000000000000.00（19位）]失败
+2019-06-17 23:22:48,222 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 74 (char 73)
+2019-06-17 23:22:49,737 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字', 'status': 0}
+?           ^  --                         ^^^^^^^^^^^^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[借款期限为负数-1]失败
+2019-06-17 23:22:49,878 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字', 'status': 0}
+?           ^  --                         ^^^^^^^^^^^^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[借款期限为0]失败
+2019-06-17 23:22:50,003 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'sta[19 chars]0102'} != {'sta[19 chars]0102', 'data': None, 'msg': "\n### Error updat[822 chars]w 1"}
+Diff is 1137 characters long. Set self.maxDiff to None to see it. : 执行[借款期限为150]失败
+2019-06-17 23:22:50,096 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 109 (char 108)
+2019-06-17 23:22:50,456 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 128 (char 127)
+2019-06-17 23:22:50,612 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '201011', 'data': None, 'msg':[34 chars]，11'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201011',
+-  'data': None,
+-  'msg': '参数错误：借款日期类型repaymemtWay只能为4，5，10，11',
+-  'status': 0} : 执行[还款方式为负数-4]失败
+2019-06-17 23:22:50,753 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '201011', 'data': None, 'msg':[34 chars]，11'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201011',
+-  'data': None,
+-  'msg': '参数错误：借款日期类型repaymemtWay只能为4，5，10，11',
+-  'status': 0} : 执行[还款方式为非法数字]失败
+2019-06-17 23:22:50,846 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 146 (char 145)
+2019-06-17 23:22:51,018 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '201012', 'data': None, 'msg':[26 chars]-10'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201012',
+-  'data': None,
+-  'msg': '参数错误：竞标天数biddingDays只能为1-10',
+-  'status': 0} : 执行[竞标天数为负数-1]失败
+2019-06-17 23:22:51,737 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '201012', 'data': None, 'msg':[26 chars]-10'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201012',
+-  'data': None,
+-  'msg': '参数错误：竞标天数biddingDays只能为1-10',
+-  'status': 0} : 执行[竞标天数为0]失败
+2019-06-17 23:22:51,862 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '201012', 'data': None, 'msg':[26 chars]-10'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201012',
+-  'data': None,
+-  'msg': '参数错误：竞标天数biddingDays只能为1-10',
+-  'status': 0} : 执行[竞标天数为11]失败
+2019-06-17 23:22:51,955 - mylogger - [INFO] - [日志信息]:
+====================执行加标接口用例结束====================
+2019-06-17 23:22:52,080 - mylogger - [INFO] - [日志信息]:
+====================开始执行投资接口用例====================
+2019-06-17 23:22:53,018 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '100014', 'data': None, 'msg': '请先登录'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '竞标成功'}
+- {'code': '100014', 'data': None, 'msg': '请先登录', 'status': 0}
+?                -                         ^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '竞标成功', 'status': 1}
+?                                         ^^^^             ^
+ : 执行[不登录直接投资]失败
+2019-06-17 23:22:54,330 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 14 (char 13)
+2019-06-17 23:22:54,455 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 55 (char 54)

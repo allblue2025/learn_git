@@ -1,0 +1,91 @@
+2019-06-18 10:33:22,771 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 90 (char 89)
+2019-06-18 10:33:22,912 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 109 (char 108)
+2019-06-18 10:33:23,036 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 128 (char 127)
+2019-06-18 10:33:23,161 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 146 (char 145)
+2019-06-18 10:33:23,333 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'sta[19 chars]0102'} != {'sta[19 chars]0102', 'data': None, 'msg': "\n### Error updat[790 chars]w 1"}
+Diff is 1105 characters long. Set self.maxDiff to None to see it. : 执行[标题长度为51个中文字符串]失败
+2019-06-18 10:33:23,490 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'status': 0}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1} : 执行[标题为int类型]失败
+2019-06-18 10:33:24,396 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'sta[19 chars]0102'} != {'sta[19 chars]0102', 'data': None, 'msg': "\n### Error updat[814 chars]w 1"}
+Diff is 1129 characters long. Set self.maxDiff to None to see it. : 执行[借款金额为10000000000000000.00（19位）]失败
+2019-06-18 10:33:24,755 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 74 (char 73)
+2019-06-18 10:33:26,301 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字', 'status': 0}
+?           ^  --                         ^^^^^^^^^^^^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[借款期限为负数-1]失败
+2019-06-18 10:33:26,426 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
+- {'code': '20109', 'data': None, 'msg': '请根据数值参数的类型对应输入合法的数字', 'status': 0}
+?           ^  --                         ^^^^^^^^^^^^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+?           ^^^                           ^^^^             ^
+ : 执行[借款期限为0]失败
+2019-06-18 10:33:26,583 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'sta[19 chars]0102'} != {'sta[19 chars]0102', 'data': None, 'msg': "\n### Error updat[822 chars]w 1"}
+Diff is 1137 characters long. Set self.maxDiff to None to see it. : 执行[借款期限为150]失败
+2019-06-18 10:33:26,661 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 109 (char 108)
+2019-06-18 10:33:27,036 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 128 (char 127)
+2019-06-18 10:33:27,207 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '201011', 'data': None, 'msg':[34 chars]，11'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201011',
+-  'data': None,
+-  'msg': '参数错误：借款日期类型repaymemtWay只能为4，5，10，11',
+-  'status': 0} : 执行[还款方式为负数-4]失败
+2019-06-18 10:33:27,364 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '201011', 'data': None, 'msg':[34 chars]，11'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201011',
+-  'data': None,
+-  'msg': '参数错误：借款日期类型repaymemtWay只能为4，5，10，11',
+-  'status': 0} : 执行[还款方式为非法数字]失败
+2019-06-18 10:33:27,473 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 146 (char 145)
+2019-06-18 10:33:27,645 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '201012', 'data': None, 'msg':[26 chars]-10'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201012',
+-  'data': None,
+-  'msg': '参数错误：竞标天数biddingDays只能为1-10',
+-  'status': 0} : 执行[竞标天数为负数-1]失败
+2019-06-18 10:33:28,363 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '201012', 'data': None, 'msg':[26 chars]-10'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201012',
+-  'data': None,
+-  'msg': '参数错误：竞标天数biddingDays只能为1-10',
+-  'status': 0} : 执行[竞标天数为0]失败
+2019-06-18 10:33:28,504 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '201012', 'data': None, 'msg':[26 chars]-10'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '加标成功'}
++ {'code': '10001', 'data': None, 'msg': '加标成功', 'status': 1}
+- {'code': '201012',
+-  'data': None,
+-  'msg': '参数错误：竞标天数biddingDays只能为1-10',
+-  'status': 0} : 执行[竞标天数为11]失败
+2019-06-18 10:33:28,629 - mylogger - [INFO] - [日志信息]:
+====================执行加标接口用例结束====================
+2019-06-18 10:33:28,770 - mylogger - [INFO] - [日志信息]:
+====================开始执行投资接口用例====================
+2019-06-18 10:33:29,707 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '100014', 'data': None, 'msg': '请先登录'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '竞标成功'}
+- {'code': '100014', 'data': None, 'msg': '请先登录', 'status': 0}
+?                -                         ^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '竞标成功', 'status': 1}
+?                                         ^^^^             ^
+ : 执行[不登录直接投资]失败
+2019-06-18 10:33:31,081 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 14 (char 13)
+2019-06-18 10:33:31,206 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 55 (char 54)
+2019-06-18 10:33:33,425 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：{'status': 0, 'code': '11015', 'data': None, 'msg': '账户余额不足，请充值！'} != {'status': 1, 'code': '10001', 'data': None, 'msg': '竞标成功'}
+- {'code': '11015', 'data': None, 'msg': '账户余额不足，请充值！', 'status': 0}
+?            ^  -                         ^^^^^^^^^^^             ^
+
++ {'code': '10001', 'data': None, 'msg': '竞标成功', 'status': 1}
+?            ^^                           ^^^^             ^
+ : 执行[投资金额超过投资人账户余额]失败
+2019-06-18 10:33:33,550 - mylogger - [INFO] - [日志信息]:
+====================执行投资接口用例结束====================
+2019-06-18 11:11:54,761 - mylogger - [INFO] - [日志信息]:
+====================开始执行投资接口用例====================
+2019-06-18 11:11:55,776 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：执行[不登录直接投资]失败 :: {'code': '100014', 'data': None, 'msg': '请先登录', 'status': 0} != {'code': '10001', 'data': None, 'msg': '竞标成功', 'status': 1}
+2019-06-18 11:11:57,651 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 14 (char 13)
+2019-06-18 11:11:57,776 - mylogger - [INFO] - [日志信息]:Expecting value: line 1 column 55 (char 54)
+2019-06-18 11:12:00,119 - mylogger - [ERROR] - [日志信息]:用例执行失败!具体异常为：执行[投资金额超过投资人账户余额]失败 :: {'code': '11015', 'data': None, 'msg': '账户余额不足，请充值！', 'status': 0} != {'code': '10001', 'data': None, 'msg': '竞标成功', 'status': 1}
+2019-06-18 11:12:00,213 - mylogger - [INFO] - [日志信息]:
+====================执行投资接口用例结束====================
